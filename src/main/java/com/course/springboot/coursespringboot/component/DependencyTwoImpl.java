@@ -3,7 +3,7 @@ package com.course.springboot.coursespringboot.component;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Primary
+//@Primary
 @Component
 public class DependencyTwoImpl implements DependencyFirst {
 
