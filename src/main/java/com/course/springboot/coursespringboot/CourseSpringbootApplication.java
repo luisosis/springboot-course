@@ -1,7 +1,9 @@
 package com.course.springboot.coursespringboot;
 
 import com.course.springboot.coursespringboot.bean.MyBean;
+import com.course.springboot.coursespringboot.bean.MyBeanWithProperties;
 import com.course.springboot.coursespringboot.component.DependencyFirst;
+import com.course.springboot.coursespringboot.pojo.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,11 +16,19 @@ public class CourseSpringbootApplication implements CommandLineRunner {
 
     private MyBean myBean;
 
+    private MyBeanWithProperties myBeanWithProperties;
+
+    private User user;
+
     public CourseSpringbootApplication(
             @Qualifier("dependencyFirstImpl") DependencyFirst dependencyFirst,
-            MyBean myBean) {
+            MyBean myBean,
+            MyBeanWithProperties myBeanWithProperties,
+            User user) {
         this.dependencyFirst = dependencyFirst;
         this.myBean = myBean;
+        this.myBeanWithProperties = myBeanWithProperties;
+        this.user = user;
     }
 
     public static void main(String[] args) {
@@ -29,5 +39,7 @@ public class CourseSpringbootApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         dependencyFirst.greeting();
         myBean.print();
+        System.out.println(myBeanWithProperties.function());
+        System.out.println(user.toString());
     }
 }
