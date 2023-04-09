@@ -4,6 +4,8 @@ import com.course.springboot.coursespringboot.bean.MyBean;
 import com.course.springboot.coursespringboot.bean.MyBeanWithProperties;
 import com.course.springboot.coursespringboot.component.DependencyFirst;
 import com.course.springboot.coursespringboot.pojo.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CourseSpringbootApplication implements CommandLineRunner {
+
+    Log LOGGER = LogFactory.getLog(CourseSpringbootApplication.class);
 
     private DependencyFirst dependencyFirst;
 
@@ -41,5 +45,8 @@ public class CourseSpringbootApplication implements CommandLineRunner {
         myBean.print();
         System.out.println(myBeanWithProperties.function());
         System.out.println(user.toString());
+        LOGGER.info("este es un log info");
+        LOGGER.error("este es un log error");
+        LOGGER.debug("este es un log debug");
     }
 }
